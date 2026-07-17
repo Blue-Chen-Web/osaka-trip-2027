@@ -9,7 +9,7 @@
   <!-- Google Fonts: Noto Sans TC & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Noto+Sans+TC:wght=300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
@@ -121,7 +121,7 @@
   <!-- Content Containers -->
   <main class="max-w-md mx-auto px-4 mt-6">
 
-    <!-- TAB 1: ITINERARY (Clean Text-Only Version) -->
+    <!-- TAB 1: ITINERARY (With detailed pictures for every item) -->
     <div id="tab-content-itinerary" class="space-y-6">
       
       <!-- Days Horizontal Slider -->
@@ -171,34 +171,40 @@
             </p>
 
             <!-- Timeline nodes -->
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-blue-500 text-white rounded-full p-0.5"><i data-lucide="plane" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">15:40 (台灣時間)</div>
                 <div class="text-sm font-bold text-slate-700">桃園機場 T1 起飛 (D7 378)</div>
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="桃園機場起飛示意">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">19:20 (日本時間)</div>
                 <div class="text-sm font-bold text-slate-700">抵達關西國際機場 T1</div>
                 <p class="text-xs text-slate-500 mt-1">⚠️ 9人團大，建議在機上寫好入境卡，出關動作要迅速。</p>
+                <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="關西國際機場">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="train" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">20:15 - 21:15</div>
                 <div class="text-sm font-bold text-slate-700">搭乘 南海電鐵 (Rapi:t 或特急)</div>
                 <p class="text-xs text-slate-500 mt-1">從關西機場直達難波站，最快約 38 分鐘。走路約 6 分鐘到 K6 飯店。</p>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="南海電鐵">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-purple-500 text-white rounded-full p-0.5"><i data-lucide="key" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">21:30 - 入住飯店</div>
                 <div class="text-sm font-bold text-slate-700">Hotel K6 Osaka Namba Check-in</div>
+                <!-- Day 1 Hotel Lobby Image with correctly URL encoded filename spaces -->
+                <img src="截圖%202026-06-25%20下午3.47.19.png" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="Hotel K6 難波飯店大廳" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fee2e2/991b1b?text=Hotel+K6+Namba+Lobby'">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">21:45 ~ 深夜</div>
                 <div class="text-sm font-bold text-slate-700">心齋橋、道頓堀美食探索</div>
                 <p class="text-xs text-slate-500 mt-1">可以找拉麵（一蘭、金龍）、章魚燒等深夜食堂，洗去搭機疲憊。</p>
+                <img src="https://images.unsplash.com/photo-1590253697338-00f6a4073a72?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="道頓堀夜景">
               </div>
             </div>
           </div>
@@ -221,30 +227,34 @@
               今天主攻天保山港灣地區，這裡有極受歡迎的海遊館與樂高樂園，晚上再去環球影城外圍的 CityWalk，大人小孩都能滿足！
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="compass" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">上午行程</div>
                 <div class="text-sm font-bold text-slate-700">海遊館 (Kaiyukan) 🐳</div>
                 <p class="text-xs text-slate-500 mt-1">巨大鯨鯊水槽！建議提早線上購票，避開現場排隊人潮。</p>
+                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="海遊館鯨鯊">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-yellow-500 text-white rounded-full p-0.5"><i data-lucide="toy-brick" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">中午/下午</div>
                 <div class="text-sm font-bold text-slate-700">大阪樂高樂園 & 天保山市場</div>
                 <p class="text-xs text-slate-500 mt-1">天保山市場有浪速美食橫丁，午餐可以解決。緊接著帶孩子暢玩室內樂高樂園。</p>
+                <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="樂高積木樂園">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="circle-dot" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">傍晚</div>
                 <div class="text-sm font-bold text-slate-700">天保山大摩天輪 🎡</div>
                 <p class="text-xs text-slate-500 mt-1">挑戰水晶透明車廂，鳥瞰大阪港夕陽美景。</p>
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="天保山大摩天輪">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">晚上</div>
                 <div class="text-sm font-bold text-slate-700">環球城市步行街 (Universal CityWalk)</div>
-                <p class="text-xs text-slate-500 mt-1">不用進樂園也能感受濃厚環球氣氛！搭乘接駁船「Captain Line」從天保山到對岸的環球影城，或者搭地鐵前往，這裡充滿章魚燒博物館與主題餐廳。</p>
+                <p class="text-xs text-slate-500 mt-1">不用進樂園也能感受濃厚環球氣氛！搭乘接駁船「Captain Line」或搭地鐵前往。</p>
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="環球城市步行街">
               </div>
             </div>
           </div>
@@ -267,24 +277,27 @@
               今日預訂 Klook 遊覽車包套行程。不用自己擠電車轉車，對於 9 人大團體（又有老有小）是極為聰明的選擇！
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-indigo-600 text-white rounded-full p-0.5"><i data-lucide="bus" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">上午</div>
                 <div class="text-sm font-bold text-slate-700">奈良公園看小鹿 🦌</div>
                 <p class="text-xs text-slate-500 mt-1">小心鹿會搶鹿仙貝喔！孩子們一定又愛又驚喜。順便參觀宏偉的東大寺。</p>
+                <img src="https://images.unsplash.com/photo-1549137701-46549b068800?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="奈良小鹿">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-orange-500 text-white rounded-full p-0.5"><i data-lucide="shrub" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">中午</div>
                 <div class="text-sm font-bold text-slate-700">伏見稻荷大社 · 千本鳥居 ⛩️</div>
                 <p class="text-xs text-slate-500 mt-1">走進壯麗的朱紅色鳥居隧道，感受濃濃京都氛圍，也是拍家族大合照的絕佳地點。</p>
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="千本鳥居">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-emerald-600 text-white rounded-full p-0.5"><i data-lucide="trees" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">下午</div>
                 <div class="text-sm font-bold text-slate-700">京都嵐山竹林小徑 & 穿和服 👘</div>
                 <p class="text-xs text-slate-500 mt-1">漫步清幽的嵐山竹林、橫跨渡月橋。安排全家體驗精緻和服，拍照留念一輩子難忘。</p>
+                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="嵐山竹林與和服">
               </div>
             </div>
           </div>
@@ -307,24 +320,27 @@
               枚方遊樂園是日本最貼近家庭的遊樂園，設施老少咸宜，且冬季特別熱門！
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="milestone" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">上午交通</div>
                 <div class="text-sm font-bold text-slate-700">搭乘京阪電車</div>
-                <p class="text-xs text-slate-500 mt-1">從難波出發搭地鐵到淀屋橋或北濱站，轉乘京阪本線至「枚方公園站」下車，走路約 5-10 分鐘即可抵達。</p>
+                <p class="text-xs text-slate-500 mt-1">從難波出發搭地鐵轉乘京阪本線至「枚方公園站」下車，走路約 5-10 分鐘即可抵達。</p>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="京阪電車">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-rose-400 text-white rounded-full p-0.5"><i data-lucide="ticket" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">白天行程</div>
                 <div class="text-sm font-bold text-slate-700">暢玩遊樂園多項設施 🎠</div>
                 <p class="text-xs text-slate-500 mt-1">包含兒童友善的飛車、旋轉木馬，冬天往往還有專屬的滑雪盆、冰上溜冰區（強烈推薦體驗）。</p>
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="遊樂設施">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-yellow-500 text-white rounded-full p-0.5"><i data-lucide="stars" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">夜間重頭戲</div>
                 <div class="text-sm font-bold text-slate-700">冬季夜間點燈（光之遊園地）✨</div>
                 <p class="text-xs text-slate-500 mt-1">夜晚園區亮起百萬盞炫目 LED 燈，宛如夢幻仙境，非常浪漫好拍！</p>
+                <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="光之遊園地彩燈">
               </div>
             </div>
           </div>
@@ -347,30 +363,34 @@
               今天是以孩子們為核心的室內放電日，同時可以在全日本最長的商店街好好血拚，晚上前往充滿庶民美食的天滿市場。
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-cyan-500 text-white rounded-full p-0.5"><i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">上午</div>
                 <div class="text-sm font-bold text-slate-700">Kids Plaza Osaka (大阪兒童樂園) 🎡</div>
-                <p class="text-xs text-slate-500 mt-1">日本首座結合科學教育、角色扮演與實作的超大室內兒童館。超大奇幻城堡滑梯，小孩絕對能徹底放電！</p>
+                <p class="text-xs text-slate-500 mt-1">日本首座結合科學教育、角色扮演與實作的超大室內兒童館。小孩絕對能徹底放電！</p>
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="Kids Plaza Osaka">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="trees" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">下午（室外）</div>
                 <div class="text-sm font-bold text-slate-700">扇町公園 (天滿兒童公園)</div>
                 <p class="text-xs text-slate-500 mt-1">就在兒童樂園外面，有巨型滑梯 and 攀爬架，非常適合大肆奔跑放風。</p>
+                <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="扇町公園">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">下午（購物）</div>
                 <div class="text-sm font-bold text-slate-700">天神橋筋商店街 🛍️</div>
                 <p class="text-xs text-slate-500 mt-1">全長 2.6 公里！藥妝店、超市、文具、童裝一應俱全，比起心齋橋更便宜好逛。</p>
+                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="商店街購物">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">晚上</div>
                 <div class="text-sm font-bold text-slate-700">天滿市場美食 🏮</div>
                 <p class="text-xs text-slate-500 mt-1">聚集超多好吃的居酒屋 and 特色餐館，體驗道地的大盤平民夜生活。</p>
+                <img src="https://images.unsplash.com/photo-1570168007244-df7a6283032c?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="天滿市場紅燈籠">
               </div>
             </div>
           </div>
@@ -393,24 +413,27 @@
               行程進入尾聲，今天我們拜訪最著名的大阪城地標，體驗特色觀光交通工具，下午再到有著濃厚昭和復古感的新世界散策。
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-emerald-700 text-white rounded-full p-0.5"><i data-lucide="castle" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">上午</div>
                 <div class="text-sm font-bold text-slate-700">大阪城公園與小火車 🚂</div>
                 <p class="text-xs text-slate-500 mt-1">搭乘公園內可愛的 Road Train 公園小火車前往天守閣，節省長輩 and 小孩的腿力。</p>
+                <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef21?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="大阪城天守閣">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-cyan-600 text-white rounded-full p-0.5"><i data-lucide="ship" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">中午</div>
                 <div class="text-sm font-bold text-slate-700">大阪城御座船 ⛵</div>
                 <p class="text-xs text-slate-500 mt-1">搭乘金碧輝煌的御座船繞行大阪城護城河，從水面仰望壯觀的天守閣石牆。</p>
+                <img src="https://images.unsplash.com/photo-1532186210425-83e97c112521?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="御座船航行">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="building-2" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">下午/晚上</div>
                 <div class="text-sm font-bold text-slate-700">通天閣 & 新世界老街 🗼</div>
-                <p class="text-xs text-slate-500 mt-1">前往通天閣（敢挑戰的話去玩 Tower Slider 巨型滑梯），周邊「新世界」招牌浮誇至極。晚餐一定要在此享用大阪名物——串炸（炸串）！</p>
+                <p class="text-xs text-slate-500 mt-1">前往通天閣，晚餐一定要在此享用大阪名物——串炸（炸串）！</p>
+                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="新世界通天閣">
               </div>
             </div>
           </div>
@@ -433,35 +456,40 @@
               最後一天把握時間，前往機場旁的臨空城（Rinku Town）Outlet 做最後血拼與補貨，接著順暢地前往機場。
             </p>
 
-            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-5 relative">
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-red-500 text-white rounded-full p-0.5"><i data-lucide="hotel" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">09:00</div>
                 <div class="text-sm font-bold text-slate-700">辦理退房，攜行李出發</div>
-                <p class="text-xs text-slate-500 mt-1">退房後，搭乘南海電鐵至「臨空城站」。大行李可以寄存在臨空城車站置物櫃或 Outlet 的行李寄存處。</p>
+                <p class="text-xs text-slate-500 mt-1">退房後，搭乘南海電鐵至「臨空城站」。大行李可以寄存在置物櫃或 Outlet 寄存處。</p>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="退房出發">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">10:00 - 11:15</div>
                 <div class="text-sm font-bold text-slate-700">臨空城 Outlet (Rinku Premium Outlets) 🛍️</div>
                 <p class="text-xs text-slate-500 mt-1">十點準時開門，快狠準掃貨最後一波！</p>
+                <img src="https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="臨空城Outlet購物">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="train" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">11:15 - 11:30</div>
                 <div class="text-sm font-bold text-slate-700">前往機場</div>
                 <p class="text-xs text-slate-500 mt-1">從臨空城搭乘一站電車即可抵達關西機場第一航廈。</p>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="電車前往機場">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-blue-500 text-white rounded-full p-0.5"><i data-lucide="plane-land" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">11:30 - 14:30</div>
                 <div class="text-sm font-bold text-slate-700">關西機場 KIX T1 報到、託運、午餐</div>
                 <p class="text-xs text-slate-500 mt-1">下午 14:30 中華航空（CI 0153）起飛。提早 3 小時到機場排隊辦理報到，比較從容。</p>
+                <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="關西機場大廳">
               </div>
               <div class="relative">
                 <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="home" class="w-3.5 h-3.5"></i></span>
                 <div class="text-xs text-slate-400 font-semibold">16:45 (台灣時間)</div>
                 <div class="text-sm font-bold text-slate-700">抵達桃園國際機場 T2 · 平安回家！</div>
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=80" class="w-full h-28 object-cover rounded-xl mt-1.5 shadow-sm" alt="降落桃園機場">
               </div>
             </div>
           </div>
@@ -471,7 +499,7 @@
 
     </div>
 
-    <!-- TAB 2: TRANSPORTATION & FLIGHTS & HOTEL & GOOGLE MAPS -->
+    <!-- TAB 2: TRANSPORTATION & FLIGHTS & HOTEL -->
     <div id="tab-content-info" class="hidden space-y-6">
       
       <!-- Google Maps attractions List Card -->
@@ -840,7 +868,7 @@
       initCountdown();
     }
 
-    // Target Date for Trip (2027-01-24 15:40:00 Taiwan time)
+    // Target Date for Trip (2027-01-24 15:40:00 Taiwan time - approx KIX arrival/departure time offset is fine)
     const targetDate = new Date('2027-01-24T15:40:00+08:00').getTime();
 
     function initCountdown() {
