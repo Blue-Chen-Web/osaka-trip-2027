@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2027 大阪家族跨世代歡樂之旅 🇯🇵</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans TC & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    /* iOS Momentum Scrolling */
+    .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-24">
+
+  <!-- Header Section -->
+  <header class="bg-gradient-to-r from-orange-400 via-rose-400 to-pink-500 text-white pb-12 pt-6 px-4 rounded-b-[2rem] shadow-lg relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-md mx-auto relative z-10">
+      <div class="flex items-center justify-between mb-4">
+        <span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wider flex items-center gap-1">
+          <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i> FAMILY TRIP 2027
+        </span>
+        <div class="flex gap-2">
+          <button onclick="toggleShare()" class="p-2 bg-white/15 rounded-full hover:bg-white/25 transition">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+      
+      <h1 class="text-3xl font-black tracking-tight mb-2">大阪跨世代歡樂行</h1>
+      <p class="text-white/90 text-sm font-light mb-6 flex items-center gap-1.5">
+        <i data-lucide="calendar" class="w-4 h-4 text-white/80"></i> 2027/01/24 ~ 01/30 (7天6夜)
+      </p>
+
+      <!-- Countdown Timer Card -->
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner">
+        <div class="text-xs text-white/80 mb-2 font-medium tracking-wide text-center uppercase">距離出發還有</div>
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="bg-black/10 rounded-xl py-2">
+            <span id="countdown-days" class="block text-2xl font-bold">--</span>
+            <span class="text-[10px] text-white/70">天</span>
+          </div>
+          <div class="bg-black/10 rounded-xl py-2">
+            <span id="countdown-hours" class="block text-2xl font-bold">--</span>
+            <span class="text-[10px] text-white/70">時</span>
+          </div>
+          <div class="bg-black/10 rounded-xl py-2">
+            <span id="countdown-mins" class="block text-2xl font-bold">--</span>
+            <span class="text-[10px] text-white/70">分</span>
+          </div>
+          <div class="bg-black/10 rounded-xl py-2">
+            <span id="countdown-secs" class="block text-2xl font-bold">--</span>
+            <span class="text-[10px] text-white/70">秒</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Statistics & Group Overview -->
+  <section class="max-w-md mx-auto px-4 -mt-6">
+    <div class="bg-white rounded-2xl p-4 shadow-md border border-slate-100 flex items-center justify-around text-center">
+      <div>
+        <div class="text-xs text-slate-400 mb-1">總人數</div>
+        <div class="text-lg font-bold text-slate-800 flex items-center gap-1 justify-center">
+          <i data-lucide="users" class="w-4 h-4 text-rose-500"></i> 9 人
+        </div>
+      </div>
+      <div class="h-8 w-px bg-slate-200"></div>
+      <div>
+        <div class="text-xs text-slate-400 mb-1">家庭組合</div>
+        <div class="text-xs font-semibold text-slate-700">
+          3 組家庭 <span class="block text-[10px] text-slate-400">(6大3小)</span>
+        </div>
+      </div>
+      <div class="h-8 w-px bg-slate-200"></div>
+      <div>
+        <div class="text-xs text-slate-400 mb-1">主住宿點</div>
+        <div class="text-xs font-bold text-emerald-600 flex items-center gap-0.5 justify-center">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> 難波 K6
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Navigation Tabs -->
+  <nav class="max-w-md mx-auto px-4 mt-6">
+    <div class="flex space-x-1 bg-slate-200/60 p-1 rounded-xl">
+      <button onclick="switchMainTab('itinerary')" id="tab-btn-itinerary" class="flex-1 py-2.5 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 bg-white text-rose-500 shadow-sm">
+        <i data-lucide="milestone" class="w-4 h-4"></i> 行程規劃
+      </button>
+      <button onclick="switchMainTab('info')" id="tab-btn-info" class="flex-1 py-2.5 text-xs font-semibold rounded-lg transition-all text-slate-600 flex items-center justify-center gap-1.5 hover:text-slate-900">
+        <i data-lucide="info" class="w-4 h-4"></i> 交通飯店
+      </button>
+    </div>
+  </nav>
+
+  <!-- Content Containers -->
+  <main class="max-w-md mx-auto px-4 mt-6">
+
+    <!-- TAB 1: ITINERARY (Clean Text-Only Version) -->
+    <div id="tab-content-itinerary" class="space-y-6">
+      
+      <!-- Days Horizontal Slider -->
+      <div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar">
+        <button onclick="filterDay(1)" id="day-pill-1" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-rose-500 text-white shadow-md flex-shrink-0">
+          D1 (1/24)
+        </button>
+        <button onclick="filterDay(2)" id="day-pill-2" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D2 (1/25)
+        </button>
+        <button onclick="filterDay(3)" id="day-pill-3" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D3 (1/26)
+        </button>
+        <button onclick="filterDay(4)" id="day-pill-4" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D4 (1/27)
+        </button>
+        <button onclick="filterDay(5)" id="day-pill-5" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D5 (1/28)
+        </button>
+        <button onclick="filterDay(6)" id="day-pill-6" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D6 (1/29)
+        </button>
+        <button onclick="filterDay(7)" id="day-pill-7" class="day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200">
+          D7 (1/30)
+        </button>
+      </div>
+
+      <!-- Day Contents Card Wrapper -->
+      <div id="itinerary-cards-container">
+        
+        <!-- DAY 1 -->
+        <div id="day-card-1" class="day-card space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/24 (週日) · 出發日</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★★★☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> 抵達關西！進駐難波
+            </h3>
+
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              第一天晚上抵達大阪。完成通關後搭車前往心齋橋難波，入住飯店後吃宵夜、散步感受冬日道頓堀。
+            </p>
+
+            <!-- Timeline nodes -->
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-blue-500 text-white rounded-full p-0.5"><i data-lucide="plane" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">15:40 (台灣時間)</div>
+                <div class="text-sm font-bold text-slate-700">桃園機場 T1 起飛 (D7 378)</div>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">19:20 (日本時間)</div>
+                <div class="text-sm font-bold text-slate-700">抵達關西國際機場 T1</div>
+                <p class="text-xs text-slate-500 mt-1">⚠️ 9人團大，建議在機上寫好入境卡，出關動作要迅速。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="train" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">20:15 - 21:15</div>
+                <div class="text-sm font-bold text-slate-700">搭乘 南海電鐵 (Rapi:t 或特急)</div>
+                <p class="text-xs text-slate-500 mt-1">從關西機場直達難波站，最快約 38 分鐘。走路約 6 分鐘到 K6 飯店。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-purple-500 text-white rounded-full p-0.5"><i data-lucide="key" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">21:30 - 入住飯店</div>
+                <div class="text-sm font-bold text-slate-700">Hotel K6 Osaka Namba Check-in</div>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">21:45 ~ 深夜</div>
+                <div class="text-sm font-bold text-slate-700">心齋橋、道頓堀美食探索</div>
+                <p class="text-xs text-slate-500 mt-1">可以找拉麵（一蘭、金龍）、章魚燒等深夜食堂，洗去搭機疲憊。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div id="day-card-2" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/25 (週一) · 港灣天保山</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★★★☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 海洋與樂高親子狂歡
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              今天主攻天保山港灣地區，這裡有極受歡迎的海遊館與樂高樂園，晚上再去環球影城外圍的 CityWalk，大人小孩都能滿足！
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="compass" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">上午行程</div>
+                <div class="text-sm font-bold text-slate-700">海遊館 (Kaiyukan) 🐳</div>
+                <p class="text-xs text-slate-500 mt-1">巨大鯨鯊水槽！建議提早線上購票，避開現場排隊人潮。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-yellow-500 text-white rounded-full p-0.5"><i data-lucide="toy-brick" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">中午/下午</div>
+                <div class="text-sm font-bold text-slate-700">大阪樂高樂園 & 天保山市場</div>
+                <p class="text-xs text-slate-500 mt-1">天保山市場有浪速美食橫丁，午餐可以解決。緊接著帶孩子暢玩室內樂高樂園。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="circle-dot" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">傍晚</div>
+                <div class="text-sm font-bold text-slate-700">天保山大摩天輪 🎡</div>
+                <p class="text-xs text-slate-500 mt-1">挑戰水晶透明車廂，鳥瞰大阪港夕陽美景。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">晚上</div>
+                <div class="text-sm font-bold text-slate-700">環球城市步行街 (Universal CityWalk)</div>
+                <p class="text-xs text-slate-500 mt-1">不用進樂園也能感受濃厚環球氣氛！搭乘接駁船「Captain Line」從天保山到對岸的環球影城，或者搭地鐵前往，這裡充滿章魚燒博物館與主題餐廳。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 3 -->
+        <div id="day-card-3" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/26 (週二) · 外出巡禮</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★☆☆☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span> Klook 輕鬆一日遊
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              今日預訂 Klook 遊覽車包套行程。不用自己擠電車轉車，對於 9 人大團體（又有老有小）是極為聰明的選擇！
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-indigo-600 text-white rounded-full p-0.5"><i data-lucide="bus" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">上午</div>
+                <div class="text-sm font-bold text-slate-700">奈良公園看小鹿 🦌</div>
+                <p class="text-xs text-slate-500 mt-1">小心鹿會搶鹿仙貝喔！孩子們一定又愛又驚喜。順便參觀宏偉的東大寺。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-orange-500 text-white rounded-full p-0.5"><i data-lucide="shrub" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">中午</div>
+                <div class="text-sm font-bold text-slate-700">伏見稻荷大社 · 千本鳥居 ⛩️</div>
+                <p class="text-xs text-slate-500 mt-1">走進壯麗的朱紅色鳥居隧道，感受濃濃京都氛圍，也是拍家族大合照的絕佳地點。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-emerald-600 text-white rounded-full p-0.5"><i data-lucide="trees" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">下午</div>
+                <div class="text-sm font-bold text-slate-700">京都嵐山竹林小徑 & 穿和服 👘</div>
+                <p class="text-xs text-slate-500 mt-1">漫步清幽的嵐山竹林、橫跨渡月橋。安排全家體驗精緻和服，拍照留念一輩子難忘。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 4 -->
+        <div id="day-card-4" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/27 (週三) · 復古遊樂園</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★★★☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span> 枚方遊樂園歡樂全日
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              枚方遊樂園是日本最貼近家庭的遊樂園，設施老少咸宜，且冬季特別熱門！
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="milestone" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">上午交通</div>
+                <div class="text-sm font-bold text-slate-700">搭乘京阪電車</div>
+                <p class="text-xs text-slate-500 mt-1">從難波出發搭地鐵到淀屋橋或北濱站，轉乘京阪本線至「枚方公園站」下車，走路約 5-10 分鐘即可抵達。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-rose-400 text-white rounded-full p-0.5"><i data-lucide="ticket" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">白天行程</div>
+                <div class="text-sm font-bold text-slate-700">暢玩遊樂園多項設施 🎠</div>
+                <p class="text-xs text-slate-500 mt-1">包含兒童友善的飛車、旋轉木馬，冬天往往還有專屬的滑雪盆、冰上溜冰區（強烈推薦體驗）。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-yellow-500 text-white rounded-full p-0.5"><i data-lucide="stars" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">夜間重頭戲</div>
+                <div class="text-sm font-bold text-slate-700">冬季夜間點燈（光之遊園地）✨</div>
+                <p class="text-xs text-slate-500 mt-1">夜晚園區亮起百萬盞炫目 LED 燈，宛如夢幻仙境，非常浪漫好拍！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 5 -->
+        <div id="day-card-5" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/28 (週四) · 寓教於樂</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★★☆☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">5</span> 瘋玩兒童樂園與天滿市集
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              今天是以孩子們為核心的室內放電日，同時可以在全日本最長的商店街好好血拚，晚上前往充滿庶民美食的天滿市場。
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-cyan-500 text-white rounded-full p-0.5"><i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">上午</div>
+                <div class="text-sm font-bold text-slate-700">Kids Plaza Osaka (大阪兒童樂園) 🎡</div>
+                <p class="text-xs text-slate-500 mt-1">日本首座結合科學教育、角色扮演與實作的超大室內兒童館。超大奇幻城堡滑梯，小孩絕對能徹底放電！</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="trees" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">下午（室外）</div>
+                <div class="text-sm font-bold text-slate-700">扇町公園 (天滿兒童公園)</div>
+                <p class="text-xs text-slate-500 mt-1">就在兒童樂園外面，有巨型滑梯 and 攀爬架，非常適合大肆奔跑放風。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">下午（購物）</div>
+                <div class="text-sm font-bold text-slate-700">天神橋筋商店街 🛍️</div>
+                <p class="text-xs text-slate-500 mt-1">全長 2.6 公里！藥妝店、超市、文具、童裝一應俱全，比起心齋橋更便宜好逛。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">晚上</div>
+                <div class="text-sm font-bold text-slate-700">天滿市場美食 🏮</div>
+                <p class="text-xs text-slate-500 mt-1">聚集超多好吃的居酒屋 and 特色餐館，體驗道地的大盤平民夜生活。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 6 -->
+        <div id="day-card-6" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/29 (週五) · 歷史與老街</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★★★☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">6</span> 大阪經典地標與通天閣
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              行程進入尾聲，今天我們拜訪最著名的大阪城地標，體驗特色觀光交通工具，下午再到有著濃厚昭和復古感的新世界散策。
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-emerald-700 text-white rounded-full p-0.5"><i data-lucide="castle" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">上午</div>
+                <div class="text-sm font-bold text-slate-700">大阪城公園與小火車 🚂</div>
+                <p class="text-xs text-slate-500 mt-1">搭乘公園內可愛的 Road Train 公園小火車前往天守閣，節省長輩 and 小孩的腿力。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-cyan-600 text-white rounded-full p-0.5"><i data-lucide="ship" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">中午</div>
+                <div class="text-sm font-bold text-slate-700">大阪城御座船 ⛵</div>
+                <p class="text-xs text-slate-500 mt-1">搭乘金碧輝煌的御座船繞行大阪城護城河，從水面仰望壯觀的天守閣石牆。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-amber-500 text-white rounded-full p-0.5"><i data-lucide="building-2" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">下午/晚上</div>
+                <div class="text-sm font-bold text-slate-700">通天閣 & 新世界老街 🗼</div>
+                <p class="text-xs text-slate-500 mt-1">前往通天閣（敢挑戰的話去玩 Tower Slider 巨型滑梯），周邊「新世界」招牌浮誇至極。晚餐一定要在此享用大阪名物——串炸（炸串）！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 7 -->
+        <div id="day-card-7" class="day-card hidden space-y-4">
+          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">1/30 (週六) · 歸國日</span>
+              <div class="flex items-center gap-1 text-xs text-slate-500">
+                <span>疲累度:</span>
+                <span class="text-rose-500 font-bold">★★☆☆☆</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-3 flex items-center gap-2 text-slate-800">
+              <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">7</span> 臨空城 Outlet 與珍重再見
+            </h3>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+              最後一天把握時間，前往機場旁的臨空城（Rinku Town）Outlet 做最後血拼與補貨，接著順暢地前往機場。
+            </p>
+
+            <div class="border-l-2 border-slate-100 ml-3 pl-5 space-y-4 relative">
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-red-500 text-white rounded-full p-0.5"><i data-lucide="hotel" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">09:00</div>
+                <div class="text-sm font-bold text-slate-700">辦理退房，攜行李出發</div>
+                <p class="text-xs text-slate-500 mt-1">退房後，搭乘南海電鐵至「臨空城站」。大行李可以寄存在臨空城車站置物櫃或 Outlet 的行李寄存處。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-rose-500 text-white rounded-full p-0.5"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">10:00 - 11:15</div>
+                <div class="text-sm font-bold text-slate-700">臨空城 Outlet (Rinku Premium Outlets) 🛍️</div>
+                <p class="text-xs text-slate-500 mt-1">十點準時開門，快狠準掃貨最後一波！</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-indigo-500 text-white rounded-full p-0.5"><i data-lucide="train" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">11:15 - 11:30</div>
+                <div class="text-sm font-bold text-slate-700">前往機場</div>
+                <p class="text-xs text-slate-500 mt-1">從臨空城搭乘一站電車即可抵達關西機場第一航廈。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-blue-500 text-white rounded-full p-0.5"><i data-lucide="plane-land" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">11:30 - 14:30</div>
+                <div class="text-sm font-bold text-slate-700">關西機場 KIX T1 報到、託運、午餐</div>
+                <p class="text-xs text-slate-500 mt-1">下午 14:30 中華航空（CI 0153）起飛。提早 3 小時到機場排隊辦理報到，比較從容。</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 bg-emerald-500 text-white rounded-full p-0.5"><i data-lucide="home" class="w-3.5 h-3.5"></i></span>
+                <div class="text-xs text-slate-400 font-semibold">16:45 (台灣時間)</div>
+                <div class="text-sm font-bold text-slate-700">抵達桃園國際機場 T2 · 平安回家！</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TAB 2: TRANSPORTATION & FLIGHTS & HOTEL & GOOGLE MAPS -->
+    <div id="tab-content-info" class="hidden space-y-6">
+      
+      <!-- Google Maps attractions List Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+        <h3 class="text-md font-bold mb-3 text-slate-800 flex items-center gap-2 border-b pb-2">
+          <i data-lucide="map-pinned" class="text-rose-500 w-5 h-5"></i> 📍 景點 Google 地圖導航
+        </h3>
+        <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+          長按或點擊下方各天景點，將一鍵開啟 Google 地圖 App（手機端），方便您帶領全家 9 人大團體精準前往目的地不迷路！
+        </p>
+
+        <!-- Dropdowns for each Day's Map Links -->
+        <div class="space-y-3">
+          
+          <!-- D1 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(1)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">1</span> D1 (1/24) 心齋橋難波</span>
+              <i data-lucide="chevron-down" id="map-arrow-1" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-1" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=Hotel+K6+Osaka+Namba" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🏨 Hotel K6 Osaka Namba</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=道頓堀" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🏮 道頓堀 (美食與招牌街)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=心齋橋筋商店街" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🛍️ 心齋橋筋商店街</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D2 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(2)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">2</span> D2 (1/25) 港灣天保山</span>
+              <i data-lucide="chevron-down" id="map-arrow-2" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-2" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=大阪海遊館" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🐳 大阪海遊館 (Kaiyukan)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=LEGOLAND+Discovery+Center+Osaka" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🧱 大阪樂高樂園探索中心</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=天保山大摩天輪" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🎡 天保山大摩天輪</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=天保山市場街" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🍔 天保山購物廣場 (美食街)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=Universal+CityWalk+Osaka" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">✨ 環球影城步行街 (CityWalk)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D3 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(3)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">3</span> D3 (1/26) Klook 奈良京都</span>
+              <i data-lucide="chevron-down" id="map-arrow-3" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-3" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=奈良公園" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🦌 奈良公園 (餵小鹿地點)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=東大寺" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">⛩️ 東大寺 (世界最大木造建築)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=伏見稻荷大社" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">⛩️ 伏見稻荷大社 (千本鳥居)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=嵐山竹林小徑" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🎋 嵐山竹林小徑 (清幽散步道)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=渡月橋" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🌉 嵐山渡月橋</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D4 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(4)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">4</span> D4 (1/27) 枚方復古樂園</span>
+              <i data-lucide="chevron-down" id="map-arrow-4" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-4" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=Hirakata+Park" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🎠 枚方遊樂園 (Hirakata Park)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D5 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(5)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">5</span> D5 (1/28) 兒童樂園與天滿</span>
+              <i data-lucide="chevron-down" id="map-arrow-5" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-5" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=Kids+Plaza+Osaka" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🎡 Kids Plaza Osaka (大阪兒童樂園)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=扇町公園" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🌳 扇町公園 (戶外大型特色溜滑梯)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=天神橋筋商店街" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🛍️ 天神橋筋商店街 (全日最長商店街)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=天滿市場" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🏮 天滿市場 (大阪庶民美食聚集地)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D6 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(6)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">6</span> D6 (1/29) 大阪城與新世界</span>
+              <i data-lucide="chevron-down" id="map-arrow-6" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-6" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=大阪城天守閣" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🏰 大阪城天守閣</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=大阪城御座船" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">⛵ 大阪城御座船 (乘船遊護城河)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=通天閣" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🗼 通天閣 (滑梯與展望台)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=新世界老街" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🍻 新世界 (炸串老街與巨型招牌)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- D7 Maps -->
+          <div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/50">
+            <button onclick="toggleMapDay(7)" class="w-full px-4 py-3 flex justify-between items-center text-xs font-bold text-slate-700 bg-slate-100/60 hover:bg-slate-100 transition">
+              <span class="flex items-center gap-2"><span class="bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px]">7</span> D7 (1/30) 臨空城與關西機場</span>
+              <i data-lucide="chevron-down" id="map-arrow-7" class="w-4 h-4 transition duration-300"></i>
+            </button>
+            <div id="map-day-content-7" class="p-3 space-y-2 hidden text-xs">
+              <a href="https://www.google.com/maps/search/?api=1&query=Rinku+Premium+Outlets" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">🛍️ 臨空城 Premium Outlets</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank" class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-100 hover:border-rose-300">
+                <span class="font-semibold text-slate-700">✈️ 關西國際機場 (KIX)</span>
+                <span class="text-rose-500 flex items-center gap-1 font-bold text-[10px]">開啟地圖 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Flight Cards -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+        <h3 class="text-md font-bold mb-4 text-slate-800 flex items-center gap-2 border-b pb-2">
+          <i data-lucide="plane" class="text-rose-500 w-5 h-5"></i> 航班資訊 (去回程)
+        </h3>
+        
+        <div class="space-y-4">
+          <!-- Departure Flight -->
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded">去程 · 1/24 (週日)</span>
+              <span class="text-xs font-semibold text-slate-500">馬亞洲航 D7 378</span>
+            </div>
+            <div class="grid grid-cols-3 items-center gap-2 text-center my-3">
+              <div>
+                <div class="text-sm font-bold text-slate-800">桃園 (TPE)</div>
+                <div class="text-xs text-slate-400">第一航廈</div>
+                <div class="text-lg font-extrabold text-rose-500 mt-1">15:40</div>
+                <div class="text-[10px] text-slate-400">台灣時間</div>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="text-[10px] text-slate-400 mb-1">飛行 2h 40m</span>
+                <div class="w-full h-px bg-slate-300 relative">
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 bg-slate-50 px-1">
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-slate-800">關西 (KIX)</div>
+                <div class="text-xs text-slate-400">第一航廈</div>
+                <div class="text-lg font-extrabold text-rose-500 mt-1">19:20</div>
+                <div class="text-[10px] text-slate-400">日本時間 (+1)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Return Flight -->
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded">回程 · 1/30 (週六)</span>
+              <span class="text-xs font-semibold text-slate-500">中華航空 CI 0153</span>
+            </div>
+            <div class="grid grid-cols-3 items-center gap-2 text-center my-3">
+              <div>
+                <div class="text-sm font-bold text-slate-800">關西 (KIX)</div>
+                <div class="text-xs text-slate-400">第一航廈</div>
+                <div class="text-lg font-extrabold text-blue-600 mt-1">14:30</div>
+                <div class="text-[10px] text-slate-400">日本時間</div>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="text-[10px] text-slate-400 mb-1">飛行 3h 15m</span>
+                <div class="w-full h-px bg-slate-300 relative">
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 bg-slate-50 px-1">
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-slate-800">桃園 (TPE)</div>
+                <div class="text-xs text-slate-400">第二航廈</div>
+                <div class="text-lg font-extrabold text-blue-600 mt-1">16:45</div>
+                <div class="text-[10px] text-slate-400">台灣時間</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Info Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+        <h3 class="text-md font-bold mb-3 text-slate-800 flex items-center gap-2 border-b pb-2">
+          <i data-lucide="hotel" class="text-rose-500 w-5 h-5"></i> 飯店資訊 (住滿 6 晚)
+        </h3>
+        <div class="space-y-3">
+          <div>
+            <span class="text-xs text-slate-400">飯店名稱</span>
+            <div class="text-base font-bold text-slate-800">Hotel K6 Osaka Namba</div>
+            <div class="text-xs text-slate-500">ホテルK6 大阪なんば店</div>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400">飯店地址</span>
+            <div class="text-sm font-medium text-slate-700 flex justify-between items-start gap-2">
+              <span id="hotel-address">〒542-0071 大阪府大阪市中央区道頓堀２丁目５−15</span>
+              <button onclick="copyToClipboard('〒542-0071 大阪府大阪市中央区道頓堀２丁目５−15', '地址')" class="text-rose-500 hover:text-rose-600 flex-shrink-0 text-xs font-semibold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> 複製
+              </button>
+            </div>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400">交通位置說明</span>
+            <p class="text-xs text-slate-500 leading-relaxed mt-1">
+              位於難波/道頓堀極佳地理位置！離地鐵「難波站」走路約 3-5 分鐘。去心齋橋逛街、吃道頓堀美食都超級近，隨時累了就可以回飯店休息。
+            </p>
+          </div>
+          <div class="pt-2 flex gap-2">
+            <a href="https://maps.google.com/?q=Hotel K6 Osaka Namba" target="_blank" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2.5 px-4 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm">
+              <i data-lucide="map" class="w-4 h-4"></i> Google 地圖導航
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended Tickets -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+        <h3 class="text-md font-bold mb-3 text-slate-800 flex items-center gap-2 border-b pb-2">
+          <i data-lucide="credit-card" class="text-rose-500 w-5 h-5"></i> 交通卡券與門票推薦
+        </h3>
+        <ul class="text-xs text-slate-600 space-y-2.5">
+          <li class="flex gap-2">
+            <span class="text-emerald-500 font-bold">●</span>
+            <div>
+              <strong>關西機場特急南海電鐵 (Rapi:t) 單程/往返票：</strong><br>
+              去程第一天 19:20 抵達後直接前往難波的最佳選擇。可先線上預訂。
+            </div>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-emerald-500 font-bold">●</span>
+            <div>
+              <strong>ICOCA 卡 (或 Apple Wallet 直接綁卡)：</strong><br>
+              人手一張，坐電車、地鐵與超商小額付費最方便，省去每次買單程票時間。
+            </div>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-emerald-500 font-bold">●</span>
+            <div>
+              <strong>海遊館、大阪樂高樂園：</strong><br>
+              D2 景點，海遊館建議必須提前購買特定時段的電子門票，不然現場大排長龍！
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Bottom Nav Bar for Mobile -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-50 md:hidden">
+    <div class="max-w-md mx-auto flex items-center justify-around py-2 px-4 text-center">
+      <button onclick="switchMainTab('itinerary')" id="bnav-itinerary" class="flex-1 flex flex-col items-center justify-center gap-1 text-rose-500 font-bold py-1">
+        <i data-lucide="milestone" class="w-5 h-5"></i>
+        <span class="text-[10px]">行程日程</span>
+      </button>
+      <button onclick="switchMainTab('info')" id="bnav-info" class="flex-1 flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-700 py-1">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <span class="text-[10px]">交通住宿</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Shared Modal -->
+  <div id="share-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden p-4">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-xs shadow-xl text-center space-y-4">
+      <div class="w-12 h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto">
+        <i data-lucide="share-2" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-800">分享旅遊網頁手冊</h3>
+      <p class="text-xs text-slate-500 leading-relaxed">
+        可直接複製當前瀏覽器網址傳送給 LINE 群組內的其他家人，大家就能直接用手機同步觀看了！
+      </p>
+      <div class="flex gap-2">
+        <button onclick="copyToClipboard(window.location.href, '網址'); closeShare();" class="flex-1 bg-rose-500 text-white text-xs font-bold py-2.5 rounded-xl">
+          複製網址
+        </button>
+        <button onclick="closeShare()" class="flex-1 bg-slate-100 text-slate-600 text-xs font-bold py-2.5 rounded-xl">
+          關閉
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert Toast -->
+  <div id="alert-toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-4 py-2.5 rounded-full shadow-lg z-50 flex items-center gap-1.5 opacity-0 pointer-events-none transition-all duration-300">
+    <i data-lucide="info" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">複製成功！</span>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    window.onload = function() {
+      lucide.createIcons();
+      initCountdown();
+    }
+
+    // Target Date for Trip (2027-01-24 15:40:00 Taiwan time)
+    const targetDate = new Date('2027-01-24T15:40:00+08:00').getTime();
+
+    function initCountdown() {
+      // Start the countdown timer
+      function updateTimer() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference < 0) {
+          document.getElementById('countdown-days').innerText = "0";
+          document.getElementById('countdown-hours').innerText = "0";
+          document.getElementById('countdown-mins').innerText = "0";
+          document.getElementById('countdown-secs').innerText = "0";
+          return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown-days').innerText = days;
+        document.getElementById('countdown-hours').innerText = hours;
+        document.getElementById('countdown-mins').innerText = minutes;
+        document.getElementById('countdown-secs').innerText = seconds;
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    // Navigation and Tabs Switching (Simplified to 2 Tabs)
+    let currentMainTab = 'itinerary';
+    function switchMainTab(tabId) {
+      currentMainTab = tabId;
+      
+      // Hide all contents
+      document.getElementById('tab-content-itinerary').classList.add('hidden');
+      document.getElementById('tab-content-info').classList.add('hidden');
+
+      // Show selected content
+      document.getElementById('tab-content-' + tabId).classList.remove('hidden');
+
+      // Reset Tab Bar Styles
+      const mainTabs = ['itinerary', 'info'];
+      mainTabs.forEach(t => {
+        const btn = document.getElementById('tab-btn-' + t);
+        const bnavBtn = document.getElementById('bnav-' + t);
+        
+        if (t === tabId) {
+          btn.className = "flex-1 py-2.5 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 bg-white text-rose-500 shadow-sm";
+          bnavBtn.className = "flex-1 flex flex-col items-center justify-center gap-1 text-rose-500 font-bold py-1";
+        } else {
+          btn.className = "flex-1 py-2.5 text-xs font-semibold rounded-lg transition-all text-slate-600 flex items-center justify-center gap-1.5 hover:text-slate-900";
+          bnavBtn.className = "flex-1 flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-700 py-1";
+        }
+      });
+    }
+
+    // Itinerary Day Swapping
+    function filterDay(dayNumber) {
+      // Hide all day cards
+      const cards = document.querySelectorAll('.day-card');
+      cards.forEach(card => card.classList.add('hidden'));
+
+      // Show specific day card
+      document.getElementById('day-card-' + dayNumber).classList.remove('hidden');
+
+      // Set active Day Pill styling
+      const pills = document.querySelectorAll('.day-pill');
+      pills.forEach((pill, idx) => {
+        const pNum = idx + 1;
+        if (pNum === dayNumber) {
+          pill.className = "day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-rose-500 text-white shadow-md flex-shrink-0";
+        } else {
+          pill.className = "day-pill px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 flex-shrink-0 border border-slate-200";
+        }
+      });
+    }
+
+    // Toggle Map Dropdowns
+    function toggleMapDay(dayNum) {
+      const content = document.getElementById('map-day-content-' + dayNum);
+      const arrow = document.getElementById('map-arrow-' + dayNum);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        arrow.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        arrow.classList.remove('rotate-180');
+      }
+    }
+
+    // Clipboard Copy Helper
+    function copyToClipboard(text, type) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast("已成功複製" + type + "！");
+      } catch (err) {
+        showToast("複製失敗，請手動複製");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // Toast Notification
+    function showToast(message) {
+      const toast = document.getElementById('alert-toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.innerText = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Share Modal Toggle
+    function toggleShare() {
+      document.getElementById('share-modal').classList.remove('hidden');
+    }
+    function closeShare() {
+      document.getElementById('share-modal').classList.add('hidden');
+    }
+
+  </script>
+</body>
+</html>
